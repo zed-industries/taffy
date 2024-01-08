@@ -606,6 +606,11 @@ impl<NodeContext> TaffyTree<NodeContext> {
         Ok(self.children[parent.into()].iter().copied().collect::<_>())
     }
 
+    /// Returns the parent of the given child node, if one exists.
+    pub fn parent(&self, child: NodeId) -> Option<NodeId> {
+        self.parents[child.into()]
+    }
+
     /// Sets the [`Style`] of the provided `node`
     pub fn set_style(&mut self, node: NodeId, style: Style) -> TaffyResult<()> {
         self.nodes[node.into()].style = style;
